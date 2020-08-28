@@ -31,16 +31,16 @@ class Middleware
      */
     public function handle($request, Closure $next): Response
     {
-        if (! $this->shouldDepict($request)) {
-            return $next($request);
-        }
+//        if (! $this->shouldDepict($request)) {
+//            return $next($request);
+//        }
 
-        try {
+//        try {
             $contents = $this->browser->render($request->fullUrl());
-        } catch (Throwable $exception) {
-            Log::error($exception);
-            return $next($request);
-        }
+//        } catch (Throwable $exception) {
+//            Log::error($exception);
+//            return $next($request);
+//        }
 
         return new Response(
             $contents,

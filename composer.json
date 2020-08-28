@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "symfony/panther": "^1.0@dev"
+        "php-webdriver/webdriver": "^1.8"
     },
     "require-dev": {
         "orchestra/testbench": "^5.1"
