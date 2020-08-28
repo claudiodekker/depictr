@@ -61,6 +61,7 @@ class Middleware
     {
         if (! $request->isMethod('GET')
             || $request->header('X-Inertia')
+            || $request->userAgent() === 'Depictr'
             || $this->isExcluded($request)
         ) {
             return false;

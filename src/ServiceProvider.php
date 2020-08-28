@@ -2,7 +2,7 @@
 
 namespace Depictr;
 
-use Depictr\Browsers\ChromeBrowser;
+use Depictr\Browsers\NodePuppeteer;
 use Depictr\Contracts\Browser;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
@@ -27,7 +27,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Browser::class, ChromeBrowser::class);
+        $this->app->bind(Browser::class, NodePuppeteer::class);
     }
 
     /**
