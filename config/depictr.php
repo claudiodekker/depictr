@@ -83,10 +83,10 @@ return [
     |--------------------------------------------------------------------------
     |
     | URLs that should NOT be processed by Depictr. This is useful for plain
-    | text files like sitemap.txt where Panther will wrap it in a stripped
+    | files such as sitemap.txt where Depictr will wrap it in a stripped
     | down HTML file. Uses $request->is(), so using `*` for wildcard
     | is permitted. The admin route and its sub-routes have
-    | been added to showacase the functionality.
+    | been added to showcase the functionality.
     |
     */
 
@@ -99,7 +99,7 @@ return [
     | Environments
     |--------------------------------------------------------------------------
     |
-    | Which Laravel environments should depictr be active for.
+    | The application environments on which Depictr should be enabled.
     |
     */
 
