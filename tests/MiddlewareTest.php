@@ -169,7 +169,7 @@ class MiddlewareTest extends TestCase
     }
 
     /** @test */
-    public function it_runs_for_every_client_and_environment_when_debug_mode_is_enabled(): void
+    public function it_considers_all_requests_as_coming_from_a_crawler_on_all_environments_when_debug_mode_is_enabled(): void
     {
         config([
             'depictr.debug' => true,
@@ -189,6 +189,30 @@ class MiddlewareTest extends TestCase
         $this->assertEquals(
             '<html><head></head><body>Fake Depictr Response</body></html>',
             $response->getContent()
+        );
+    }
+
+    /** @test */
+    public function it_only_excludes_the_request_on_all_environments_when_debug_mode_is_enabled_and_the_x_depictr_header_is_given_to_prevent_infinite_rendering_loops(): void
+    {
+        config([
+            'depictr.debug' => true,
+            'depictr.crawlers' => ['Google'],
+            'depictr.environments' => ['production', 'local'],
+            'depictr.excluded' => ['test'],
+        ]);
+
+        Route::middleware(Middleware::class)->get('/', function () {
+            return view('app');
+        });
+
+        $response = $this->get('/', ['X-Depictr' => true]);
+
+        $response->assertHeaderMissing('X-Depicted');
+        $response->assertOk();
+        $this->assertEquals(
+            view('app')->render(),
+            $response->getContent(),
         );
     }
 }
