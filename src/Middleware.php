@@ -62,13 +62,12 @@ class Middleware
     {
         if (! $request->isMethod('GET')
             || $request->header('X-Inertia')
-            || $request->userAgent() === 'Depictr'
             || $this->isExcluded($request)
         ) {
             return false;
         }
 
-        if (config('depictr.debug')) {
+        if (config('depictr.debug') && $request->userAgent() !== 'Depictr') {
             return true;
         }
 
