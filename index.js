@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    page.setUserAgent('Depictr');
+    await page.setExtraHTTPHeaders({ 'X-Depictr': Date.now().toString() });
 
     await page.goto(arguments[0]);
     process.stdout.write(await page.content());
