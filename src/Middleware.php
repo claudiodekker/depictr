@@ -39,6 +39,7 @@ class Middleware
             $contents = $this->browser->render($request->fullUrl());
         } catch (Throwable $exception) {
             Log::error($exception);
+
             return $next($request);
         }
 
