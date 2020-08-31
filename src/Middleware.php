@@ -67,7 +67,7 @@ class Middleware
             return false;
         }
 
-        if (config('depictr.debug') && $request->userAgent() !== 'Depictr') {
+        if (config('depictr.debug') && ! $request->header('X-Depictr')) {
             return true;
         }
 
