@@ -193,7 +193,7 @@ class MiddlewareTest extends TestCase
     }
 
     /** @test */
-    public function it_only_excludes_the_request_on_all_environments_when_debug_mode_is_enabled_and_the_x_depictr_header_is_given_to_prevent_infinite_rendering_loops(): void
+    public function it_ignores_debug_mode_when_the_request_has_the_x_depictr_header_to_prevent_infinite_rendering_loops(): void
     {
         config([
             'depictr.debug' => true,
