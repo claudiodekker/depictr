@@ -24,7 +24,7 @@ class NodePuppeteer implements Browser
 
         $process->start();
         while ($process->isRunning()) {
-            // waiting for process to finish
+            // Waiting for the Node.JS Puppeteer app to finish..
         }
 
         return $process->getOutput();
