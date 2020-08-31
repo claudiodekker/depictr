@@ -27,7 +27,6 @@ class NodePuppeteer implements Browser
             // waiting for process to finish
         }
 
-
         return $process->getOutput();
     }
 }
